@@ -1,13 +1,14 @@
 const React = require('react');
+const Content = require('./Content.jsx');
 
-class LiveContent extends React.Component {
+class LiveContent extends Content {
     constructor(props) {
         super(props);
     }
     
-    render() {
+    render() {console.log('live');
         return (
-            <div className={(this.props.visibility)?'visibility':'hiden'}>
+            <div className={(this.state.visibility)?'visibility':'hiden'}>
                 <h1>О жизни</h1>
             </div>
             );

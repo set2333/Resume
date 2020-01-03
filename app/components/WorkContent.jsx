@@ -1,13 +1,14 @@
 const React = require('react');
+const Content = require('./Content.jsx');
 
-class WorkContent extends React.Component {
+class WorkContent extends Content {
     constructor(props) {
         super(props);
     }
     
-    render() {
+    render() {console.log('work');
         return (
-            <div className={(this.props.visibility)?'visibility':'hiden'}>
+            <div className={(this.state.visibility)?'visibility':'hiden'}>
                 <h1>О работе</h1>
             </div>
             );
