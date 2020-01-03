@@ -1,0 +1,8 @@
+Подключение
+@import url('https://fonts.googleapis.com/css?family=Alegreya:400,700|Bad+Script&display=swap');
+
+Для акцентов 
+font-family: 'Bad Script', cursive;
+
+Для всего
+font-family: 'Alegreya', serif;
