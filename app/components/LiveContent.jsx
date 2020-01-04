@@ -8,7 +8,7 @@ class LiveContent extends Content {
     
     render() {console.log('live');
         return (
-            <div className={(this.state.visibility)?'visibility':'hiden'}>
+            <div className={((this.state.visibility)?'visibility':'hiden') + ' content'} >
                 <h1>О жизни</h1>
             </div>
             );

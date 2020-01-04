@@ -140,6 +140,8 @@ q:after {
 
 /* конец кода сброса стилей браузера */
 
+/*Два класса для показа и скрытия блоков с контентом*/
+
 .hiden {
     display: none;
 }
@@ -148,9 +150,30 @@ q:after {
     display: block;
 }
 
+/*Кнопки меню*/
+
 .nav_button {
     font-family: 'Bad Script', cursive;
     border: 1px solid;
-    padding: 5px;
+    padding: 10px;
+    text-align: center;
+    list-style-type: none;
+    margin: 10px;
+    height: 100px;
 }
 
+#main {
+    width: 960px;
+    margin: 0 auto;
+}
+
+nav {
+    width: 240px;
+    float: left;
+}
+
+.content {
+    width: 720px;
+    text-align: center;
+    margin-top: 50px;
+}

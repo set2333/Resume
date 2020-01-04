@@ -8,7 +8,7 @@ class MainContent extends Content {
     
     render() {console.log('main');
         return (
-            <div className={(this.state.visibility)?'visibility':'hiden'}>
+            <div className={((this.state.visibility)?'visibility':'hiden') + ' content'} >
                 <h1>О сайте</h1>
             </div>
             );

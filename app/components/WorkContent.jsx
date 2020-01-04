@@ -8,7 +8,7 @@ class WorkContent extends Content {
     
     render() {console.log('work');
         return (
-            <div className={(this.state.visibility)?'visibility':'hiden'}>
+            <div className={((this.state.visibility)?'visibility':'hiden') + ' content'} >
                 <h1>О работе</h1>
             </div>
             );

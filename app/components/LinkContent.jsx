@@ -8,7 +8,7 @@ class LinkContent extends Content {
     
     render() {console.log('link');
         return (
-            <div className={(this.state.visibility)?'visibility':'hiden'}>
+            <div className={((this.state.visibility)?'visibility':'hiden') + ' content'} >
                 <h1>Ссылки</h1>
             </div>
             );
