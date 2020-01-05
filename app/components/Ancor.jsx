@@ -1,6 +1,6 @@
 const React = require('react');
 
-class Button extends React.Component {
+class Ancor extends React.Component {
     constructor(props) {
         super(props);
         this.onClick = this.onClick.bind(this);
@@ -15,11 +15,12 @@ class Button extends React.Component {
         };
         data[this.props.contentName] = true;
         this.props.refresh(data);
+ 
     }
     
     render() {
-        return <li className={((this.props.acent)?'acent':'')  + ' nav_button'} onClick={this.onClick}>{this.props.title}</li>;
+        return <b onClick={this.onClick}>{this.props.title}</b>;
     }
 }
 
-module.exports = Button;
+module.exports = Ancor;

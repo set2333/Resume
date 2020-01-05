@@ -23,11 +23,11 @@ class Main extends React.Component {
     
     render() {
         return (<div>
-                    <Menu refresh={this.refresh}/>
-                    <MainContent visibility={this.state.main} />
-                    <WorkContent visibility={this.state.work} />
-                    <LiveContent visibility={this.state.live} />
-                    <LinkContent visibility={this.state.link} />
+                    <Menu refresh={this.refresh} data={this.state}/>
+                    <MainContent refresh={this.refresh} visibility={this.state.main} />
+                    <WorkContent refresh={this.refresh} visibility={this.state.work} />
+                    <LiveContent refresh={this.refresh} visibility={this.state.live} />
+                    <LinkContent refresh={this.refresh} visibility={this.state.link} />
             </div>    );
     }
 }
