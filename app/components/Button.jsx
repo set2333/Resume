@@ -14,7 +14,7 @@ class Button extends React.Component {
             link:false
         };
         data[this.props.contentName] = true;
-        this.props.refresh(data);
+       this.props.refresh(data);
     }
     
     render() {
