@@ -1,3 +1,4 @@
+//Класс от которого наследуются все контенты, т.е данные отображенные в разделе
 const React = require('react');
 
 class Content extends React.Component {

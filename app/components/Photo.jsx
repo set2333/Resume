@@ -1,3 +1,4 @@
+//Коипонент для вставки фото
 const React = require('react');
 
 class Photo extends React.Component {

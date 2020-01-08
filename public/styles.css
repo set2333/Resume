@@ -150,6 +150,14 @@ q:after {
     display: block;
 }
 
+/*Классы с одинаковыми рамками и тенью*/
+
+.content, .photo, .message, .buttonOK, .form_message {
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px black;
+}
+
 /*Кнопки меню*/
 
 .nav_button {
@@ -179,7 +187,6 @@ html {
     font-family: 'Alegreya', serif;
     line-height: 30px;
     font-size: 20px;
-    
 }
 
 p {
@@ -214,10 +221,7 @@ nav {
     margin-top: 25px;
     padding: 20px;
     min-height: 95vh;
-    border: 1px solid;
     border-top: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px black;
     background: url(images/cel.svg), url(images/note.svg) repeat-x top left / 36px auto;
 }
 
@@ -229,8 +233,65 @@ nav {
 }
 
 .photo {
-    border: 1px solid;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px black;
     margin: 10px;
+}
+
+.messageBG {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0,0,0, .5);
+}
+
+.message {
+    position: relative;
+    padding: 20px;
+    width: 360px;
+    height: 360px;
+    text-align: center;
+    background:  url(images/cel.svg), url(images/note.svg) repeat-x top left / 36px auto;
+    background-color: beige;
+    border-top: none;
+    top: 200px;
+    margin: auto;
+    
+}
+
+.buttonOK {
+    position: relative;
+    background-color: #38FBFF;
+    width: 75px;
+    height: 30px;
+    margin: 10px auto;
+}
+
+.buttonOK h2 {
+    font-family: 'Bad Script', cursive;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.buttonOK:hover h2 {
+    font-size: 20px;
+}
+
+.form_message {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #65E841;
+}
+
+.form_message textarea {
+    width: 90%;
+    height: 100px;
+}
+
+.form_message h3 {
+    text-align: left;
+    padding: 10px 30px;
+}
+
+.form_message input {
+    margin-left: 10px;
 }
