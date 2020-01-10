@@ -24,12 +24,27 @@ class FormLogin extends React.Component {
     
     onSubmit(e) {
         e.preventDefault();
-        console.log(this.state.login + ':' + this.state.pass);
+        let sendData = JSON.stringify({
+            login: this.state.login,
+            pass: this.state.pass
+        });
+        const req = new XMLHttpRequest();
+        req.open("POST", '/admin/login', true);
+        req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        req.addEventListener('readystatechange', ()=>{
+            if(req.status == 200) {
+                this.props.showMessage(true, 'Отправленно', 'Ваше сообщение отправленно. Я свяжусь с вами при первой возможности.'); 
+            }
+            else {
+                this.props.showMessage(true, 'Ошибка', 'Что-то пошло не так. Просьба переотправить сообщение на e-mail. Сылка ниже. Спасибо за понимание.'); 
+            }
+        });
+        req.send(sendData);
     }
     
     render() {
         return(
-            <div className="formMessage">
+            <div className="form_message">
                <form onSubmit={this.onSubmit}>
                    <h3>Логин <input type="text" value={this.state.login} onChange={this.onChangeLogin}/></h3>
                    <h3>Пароль <input type="password" value={this.state.pass} onChange={this.onChangePass}/></h3>
