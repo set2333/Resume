@@ -1,11 +1,14 @@
 var path = require('path');
 
 module.exports = {
-    entry: './app/app.jsx',
+    entry: {
+        "bundle": './app/app.jsx', 
+        "login" :'./app/login.jsx'
+    },
     output: {
         path: path.resolve(__dirname, './public'),
         publicPath: '/public/',
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     module: {
         rules:[

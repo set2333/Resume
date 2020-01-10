@@ -25,6 +25,10 @@ Router.get('/main', (req, res)=>{
     res.sendFile(__dirname + '/index.html');
 });
 
+Router.get('/login', (req, res)=>{
+    res.sendFile(__dirname + '/login.html');
+});
+
 Router.get('/', (req, res)=>{
     res.cookie('curentPage', 'main');
     res.sendFile(__dirname + '/index.html');
