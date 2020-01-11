@@ -33,7 +33,7 @@ class FormLogin extends React.Component {
         req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         req.addEventListener('readystatechange', ()=>{
             if(req.status == 200) {
-                this.props.showMessage(true, 'Отправленно', 'Ваше сообщение отправленно. Я свяжусь с вами при первой возможности.'); 
+                location.href = '/admin/main';
             }
             else {
                 this.props.showMessage(true, 'Ошибка', 'Что-то пошло не так. Просьба переотправить сообщение на e-mail. Сылка ниже. Спасибо за понимание.'); 

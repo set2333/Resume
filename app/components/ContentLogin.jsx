@@ -7,6 +7,7 @@ class ContentLogin extends Content {
     render() {
         return (
             <div className='visibility content' >
+               <h1>Для дальнейшей работы авторизуйтесь</h1>
                 <FormLogin showMessage={this.props.showMessage}/>
             </div>
             );

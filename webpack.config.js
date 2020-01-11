@@ -3,7 +3,8 @@ var path = require('path');
 module.exports = {
     entry: {
         "bundle": './app/app.jsx', 
-        "login" :'./app/login.jsx'
+        "login" :'./app/login.jsx',
+        "admin" :'./app/admin.jsx'
     },
     output: {
         path: path.resolve(__dirname, './public'),
