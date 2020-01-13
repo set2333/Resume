@@ -1,3 +1,4 @@
+//Форма настроек
 const React = require('react');
 const ButtonOK = require('../buttons/ButtonOK.jsx');
 const Form = require('./Form.jsx');
@@ -14,11 +15,12 @@ class FormSettings extends Form {
             emailport: '',
             emailsecure: '',
             email: '',
+            sendmail: '',
             getting : false
         };
         this.onSubmit = this.onSubmit.bind(this);
     }
-    
+    //Послк рендера формы обратимся к серверу, получим настройки и вставим полученные данные в поля формы
     componentDidMount() {
         if (!this.state.getting) {
             const req = new XMLHttpRequest();
@@ -51,7 +53,8 @@ class FormSettings extends Form {
                 host: this.state.emailhost,
                 port: this.state.emailport,
                 secure: this.state.emailsecure,
-                mail: this.state.email
+                mail: this.state.email,
+                sendmail: this.state.sendmail
             }
             
         });
@@ -76,6 +79,7 @@ class FormSettings extends Form {
                <form>
                    <h3>Логин администратора <input name="login" type="text" value={this.state.login} onChange={this.onChange}/></h3>
                    <h3>Пароль администратора <input name="pass" type="password" value={this.state.pass} onChange={this.onChange}/></h3>
+                   <h3>Отправлять сообщения на email <input name="sendmail" type="checkbox" checked={this.state.sendmail} onChange={this.onChange}/></h3>
                    <h3>Адрес почты <input name="emaillogin" type="text" value={this.state.emaillogin} onChange={this.onChange}/></h3>
                    <h3>Пароль почты <input name="emailpass" type="password" value={this.state.emailpass} onChange={this.onChange}/></h3>
                    <h3>Сервер почты <input name="emailhost" type="text" value={this.state.emailhost} onChange={this.onChange}/></h3>

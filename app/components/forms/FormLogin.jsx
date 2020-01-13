@@ -1,3 +1,4 @@
+//Форма авторизации
 const React = require('react');
 const ButtonOK = require('../buttons/ButtonOK.jsx');
 const Form = require('./Form.jsx');

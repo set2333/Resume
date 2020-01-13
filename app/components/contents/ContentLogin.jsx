@@ -1,3 +1,4 @@
+//Контент страницы авторизации
 const React = require('react');
 const Content = require('./Content.jsx');
 const FormLogin = require('../forms/FormLogin.jsx');

@@ -9,7 +9,6 @@ class Photo extends React.Component {
             </div>
         );
     }
-    
 }
 
 Photo.defaultProps = {

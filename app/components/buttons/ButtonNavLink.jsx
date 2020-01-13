@@ -1,4 +1,4 @@
-//Кнопка подтверждения действия
+//Кнопка навигации. Переходит по ссылке
 const React = require('react');
 const Button = require('./Button.jsx');
 

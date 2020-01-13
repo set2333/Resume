@@ -1,4 +1,4 @@
-//Внктренняя ссылка. Переходит на нужный раздел
+//Внутренняя ссылка. Переходит на нужный раздел
 const React = require('react');
 const Button = require('./Button.jsx');
 

@@ -1,3 +1,4 @@
+//Класс для наследования компонентами с формами
 const React = require('react');
 
 class Form extends React.Component {

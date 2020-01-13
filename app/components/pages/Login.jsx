@@ -1,23 +1,20 @@
+//Корневой компонент страницы авторизации
 const React = require('react');
-const FormLogin = require('./forms/FormLogin.jsx');
-const ContentLogin = require('./contents/ContentLogin.jsx');
-var ButtonNavLink = require('./buttons/ButtonNavLink.jsx');
-const Message = require('./other/Message.jsx')
+const Page = require('./Page.jsx');
+const FormLogin = require('../forms/FormLogin.jsx');
+const ContentLogin = require('../contents/ContentLogin.jsx');
+const ButtonNavLink = require('../buttons/ButtonNavLink.jsx');
+const Message = require('../other/Message.jsx')
 
-class Login extends React.Component {
+class Login extends Page {
     constructor(props) {
         super(props);
-        this.showMessage = this.showMessage.bind(this);
         this.state = {
             message:false,
             headMessage:'',
             textMessage:'',
             ulData: []
         }
-    }
-    
-    showMessage(show, headMessage, textMessage, ulData) {
-        this.setState({message:show, headMessage:headMessage, textMessage:textMessage, ulData:ulData});
     }
     
     render() {

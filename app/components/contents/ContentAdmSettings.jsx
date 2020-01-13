@@ -1,4 +1,4 @@
-//Контент главного раздела
+//Контент страницы с настройками
 const React = require('react');
 const Content = require('./Content.jsx');
 const FormSettings = require('../forms/FormSettings.jsx');

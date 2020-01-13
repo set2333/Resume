@@ -16,7 +16,6 @@ class Button extends React.Component {
         data[this.props.contentName] = true;
         this.props.refresh(data);
     }
-    
 }
 
 module.exports = Button;

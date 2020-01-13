@@ -9,6 +9,7 @@ class Message extends React.Component {
         this.close = this.close.bind(this);
     }
     
+    //Закрыть окно
     close() {
         this.props.showMessage(false);
     }

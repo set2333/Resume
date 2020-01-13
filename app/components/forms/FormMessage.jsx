@@ -63,7 +63,6 @@ class FormMessage extends Form {
         </div>
         )
     }
-            
 }
 
 module.exports = FormMessage;
