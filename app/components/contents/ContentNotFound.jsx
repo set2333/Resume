@@ -1,7 +1,7 @@
 //Контент раздела с контактами и ссылками
 const React = require('react');
 const Content = require('./Content.jsx');
-const ButtonAncor = require('./ButtonAncor.jsx');
+const ButtonAncor = require('../buttons/ButtonAncor.jsx');
 
 class ContentNotFound extends Content {
     

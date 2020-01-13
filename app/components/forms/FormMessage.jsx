@@ -1,8 +1,9 @@
 //Форма отправки сообщения
 const React = require('react');
-const ButtonOK = require('./ButtonOK.jsx');
+const ButtonOK = require('../buttons/ButtonOK.jsx');
+const Form = require('./Form.jsx');
 
-class FormMessage extends React.Component {
+class FormMessage extends Form {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,22 +11,7 @@ class FormMessage extends React.Component {
             adress: '',
             message: ''
         };
-        this.onChangeName = this.onChangeName.bind(this);
-        this.onChangeAdres = this.onChangeAdres.bind(this);
-        this.onChangeMessage = this.onChangeMessage.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-    }
-    
-    onChangeName(e) {
-        this.setState({name: e.target.value});
-    }
-    
-    onChangeAdres(e) {
-        this.setState({adress: e.target.value});
-    }
-    
-    onChangeMessage(e) {
-        this.setState({message: e.target.value});
     }
     
     onSubmit(e) {
@@ -67,11 +53,11 @@ class FormMessage extends React.Component {
     render() {
         return(
         <div className='form_message'>    
-        <form onSubmit={this.onSubmit}>
+        <form>
             <h2>Сообщение</h2>
-            <textarea value={this.state.message} onChange={this.onChangeMessage}/>
-            <h3>Представтесь пожалуйста<input type="text" value={this.state.name} onChange={this.onChangeName}/></h3>
-            <h3>Ваш адрес <input type="text" value={this.state.adress} onChange={this.onChangeAdres}/></h3>
+            <textarea name="message" value={this.state.message} onChange={this.onChange}/>
+            <h3>Представтесь пожалуйста<input name="name" type="text" value={this.state.name} onChange={this.onChange}/></h3>
+            <h3>Ваш адрес <input name="adress" type="adress" value={this.state.adress} onChange={this.onChange}/></h3>
             <ButtonOK onClick={this.onSubmit} />
         </form>
         </div>

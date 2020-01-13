@@ -1,8 +1,8 @@
 //Контент раздела с биографией
 const React = require('react');
 const Content = require('./Content.jsx');
-const ButtonAncor = require('./ButtonAncor.jsx');
-const Photo = require('./Photo.jsx');
+const ButtonAncor = require('../buttons/ButtonAncor.jsx');
+const Photo = require('../other/Photo.jsx');
 
 class ContentLive extends Content {
     

@@ -1,7 +1,7 @@
 //Модальное окно сообщения
 const React = require('react');
 const ReactDOM = require('react-dom');
-const ButtonOK = require('./ButtonOK.jsx');
+const ButtonOK = require('../buttons/ButtonOK.jsx');
 
 class Message extends React.Component {
     constructor(props) {

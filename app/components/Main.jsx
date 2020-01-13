@@ -1,12 +1,12 @@
 //Корневой компонент
 const React = require('react');
-var ButtonNav = require('./ButtonNav.jsx');
-var ContentMain = require('./ContentMain.jsx');
-var ContentWork = require('./ContentWork.jsx');
-var ContentLive = require('./ContentLive.jsx');
-var ContentLink = require('./ContentLink.jsx');
-var ContentNotFound = require('./ContentNotFound.jsx');
-const Message = require('./Message.jsx');
+var ButtonNav = require('./buttons/ButtonNav.jsx');
+var ContentMain = require('./contents/ContentMain.jsx');
+var ContentWork = require('./contents/ContentWork.jsx');
+var ContentLive = require('./contents/ContentLive.jsx');
+var ContentLink = require('./contents/ContentLink.jsx');
+var ContentNotFound = require('./contents/ContentNotFound.jsx');
+const Message = require('./other/Message.jsx');
 
 function getCookie(name) {
     let matches = document.cookie.match(new RegExp(

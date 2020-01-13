@@ -1,8 +1,8 @@
 //Контент главного раздела
 const React = require('react');
 const Content = require('./Content.jsx');
-const ButtonAncor = require('./ButtonAncor.jsx');
-const WelcomeMessage = require('./WelcomeMessage.jsx');
+const ButtonAncor = require('../buttons/ButtonAncor.jsx');
+const WelcomeMessage = require('../other/WelcomeMessage.jsx');
 
 class ContentMain extends Content {
     

@@ -1,7 +1,7 @@
 //Контент раздела с контактами и ссылками
 const React = require('react');
 const Content = require('./Content.jsx');
-const FormMessage = require('./FormMessage.jsx');
+const FormMessage = require('../forms/FormMessage.jsx');
 
 class ContentLink extends Content {
     

@@ -1,6 +1,6 @@
 const React = require('react');
 const Content = require('./Content.jsx');
-const FormLogin = require('./FormLogin.jsx');
+const FormLogin = require('../forms/FormLogin.jsx');
 
 class ContentLogin extends Content {
     

@@ -1,8 +1,8 @@
 const React = require('react');
-const FormLogin = require('./FormLogin.jsx');
-const ContentLogin = require('./ContentLogin.jsx');
-var ButtonNavLink = require('./ButtonNavLink.jsx');
-const Message = require('./Message.jsx')
+const FormLogin = require('./forms/FormLogin.jsx');
+const ContentLogin = require('./contents/ContentLogin.jsx');
+var ButtonNavLink = require('./buttons/ButtonNavLink.jsx');
+const Message = require('./other/Message.jsx')
 
 class Login extends React.Component {
     constructor(props) {
