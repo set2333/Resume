@@ -121,7 +121,7 @@ ol {
 }
 
 ul {
-    padding-left: 1.4em;
+    padding-left: 0;
     list-style: square;
 }
 
@@ -159,6 +159,10 @@ q:after {
 }
 
 /*Кнопки меню*/
+nav {
+    width: 240px;
+    position: fixed;
+}
 
 .nav_button {
     font-family: 'Bad Script', cursive;
@@ -204,16 +208,13 @@ h2 {
     font-size: 20px;
 }
 
+/*Основной div. На нем все остальное*/
 #main {
     width: 960px;
     margin: 0 auto;
 }
 
-nav {
-    width: 240px;
-    position: fixed;
-}
-
+/*Контенты*/
 .content {
     float: right;
     width: 720px;
@@ -222,7 +223,7 @@ nav {
     padding: 20px;
     min-height: 95vh;
     border-top: none;
-    background: url(images/cel.svg), url(images/note.svg) repeat-x top left / 36px auto;
+    background: url(images/note.svg) repeat-x top left / 36px auto, url(images/cel.svg);
 }
 
 .content li {
@@ -232,10 +233,12 @@ nav {
     padding-left: 20px;
 }
 
+/*Фото*/
 .photo {
     margin: 10px;
 }
 
+/*Сообщение*/
 .messageBG {
     width: 100vw;
     height: 100vh;
@@ -250,7 +253,7 @@ nav {
     width: 360px;
     height: 360px;
     text-align: center;
-    background:  url(images/cel.svg), url(images/note.svg) repeat-x top left / 36px auto;
+    background: url(images/note_transparent.svg) repeat-x top left / 36px auto, url(images/cel.svg);
     background-color: beige;
     border-top: none;
     top: 200px;
@@ -258,6 +261,7 @@ nav {
     
 }
 
+/*Кнопка OK*/
 .buttonOK {
     position: relative;
     background-color: #38FBFF;
@@ -297,6 +301,7 @@ nav {
     margin-left: 10px;
 }
 
+/*Таблица со списком сообщений*/
 .tebleMessages {
     width: 90%;
     margin: 0 auto;

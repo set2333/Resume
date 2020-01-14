@@ -79,17 +79,21 @@ RouterAdmin.post('/getmessages', jsonParser, isAutorized, (req, res) => {
     let messagePageNumber = req.body.numberPage * 10;
     Message.find({}, (err, docs) => {
         if (err) return sendStatus(400);
-        let messages = [];
+        let data = {
+            count:docs.length,
+            messages : []
+        }
         let endItem = (messagePageNumber*10+10>docs.length)?docs.length-messagePageNumber*10:10;
         for (let i = 0; i < endItem; i++) {
-            messages.push({
+            data.messages.push({
                 date: docs[messagePageNumber + i].date,
                 autor: docs[messagePageNumber + i].autor,
                 adress: docs[messagePageNumber + i].adress,
                 id: docs[messagePageNumber + i]._id
             });
         }
-        res.send(JSON.stringify(messages));
+        
+        res.send(JSON.stringify(data));
     });
 });
 

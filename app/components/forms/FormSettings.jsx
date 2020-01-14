@@ -26,7 +26,7 @@ class FormSettings extends Form {
             const req = new XMLHttpRequest();
             req.open("POST", '/admin/getsettings', true);
             req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-            req.addEventListener('readystatechange', ()=>{
+            req.onload = ()=>{
                 if(req.status == 200) {
                     let data = JSON.parse(req.responseText);
                     data.getting = true;
@@ -35,7 +35,7 @@ class FormSettings extends Form {
                 else {
                     this.props.showMessage(true, 'Ошибка', 'Не удалось получить настройки. '); 
                 }
-            });
+            };
             req.send();
         }
     }
@@ -61,7 +61,7 @@ class FormSettings extends Form {
         const req = new XMLHttpRequest();
         req.open("POST", '/admin/setsettings', true);
         req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        req.addEventListener('readystatechange', ()=>{
+        req.onload = ()=>{
             if(req.status == 200) {
                 this.props.showMessage(true, 'Успех', 'Настройки сохраннены. ');
                 this.setState({getting: false});
@@ -69,7 +69,7 @@ class FormSettings extends Form {
             else {
                 this.props.showMessage(true, 'Ошибка', 'Что-то пошло не так. '); 
             }
-        });
+        };
         req.send(sendData);
     }
     
