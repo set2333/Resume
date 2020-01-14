@@ -245,6 +245,7 @@ nav {
 
 .message {
     position: relative;
+    overflow-y: auto;
     padding: 20px;
     width: 360px;
     height: 360px;
@@ -294,4 +295,14 @@ nav {
 
 .form_message input {
     margin-left: 10px;
+}
+
+.tebleMessages {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.tebleMessages td, .tebleMessages th {
+    border:1px solid black;
+    text-align: center;
 }

@@ -22,9 +22,12 @@ class ContentAdmAllmessage extends Content {
         req.open("POST", '/admin/getmessages', true);
         req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         req.addEventListener('readystatechange', ()=>{
-            if(req.status == 200) {
-                let data = JSON.parse(req.responseText);
-                this.setState({messages:data});
+            console.log('req.responseText: ' + req.responseText + ' req.status: ' + req.status)
+            if(req.status == 200 && req.responseText) {
+                    console.log('TYT');
+                    let data = JSON.parse(req.responseText);
+                    this.setState({messages:data});
+            
             }
             else {
                 this.props.showMessage(true, 'Ошибка', 'Не удалось получить сообщения. '); 
@@ -37,7 +40,7 @@ class ContentAdmAllmessage extends Content {
         return (
             <div className={((this.state.visibility)?'visibility':'hiden') + ' content'} >
                 <h1>Все сообщения</h1>
-                <TableMessages messages={this.state.messages}/>
+                <TableMessages messages={this.state.messages} showMessage={this.props.showMessage}/>
             </div>
         );
     }

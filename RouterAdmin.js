@@ -51,7 +51,7 @@ RouterAdmin.post('/getsettings', isAutorized, (req, res) => {
             data.emailport = dataEmail.port;
             data.emailsecure = dataEmail.secure;
             data.sendmail = dataEmail.sendmail;
-            res.send(data);
+            res.send(JSON.stringify(data));
         });
     });
 });
@@ -89,7 +89,17 @@ RouterAdmin.post('/getmessages', jsonParser, isAutorized, (req, res) => {
                 id: docs[messagePageNumber + i]._id
             });
         }
-        res.send(messages);
+        res.send(JSON.stringify(messages));
+    });
+});
+
+//Получение одного сообщения
+RouterAdmin.post('/getmessage', jsonParser, isAutorized, (req, res) => {
+    if (!req.body) return res.sendStatus(400);
+    Message.findById(req.body._id, (err, doc) => {
+        if (err) return sendStatus(400);
+        let messages = {autor:doc.autor, message:doc.message, id:doc._id, date:doc.date, adress:doc.adress};
+        res.send(JSON.stringify(messages));
     });
 });
 
