@@ -9,18 +9,20 @@ class FormSettings extends Form {
         this.state = {
             login: '',
             pass: '',
+            sendAdmLogin: false,
+            countMessagesOnePage:0,
             emaillogin: '',
             emailpass: '',
             emailhost: '',
             emailport: '',
             emailsecure: '',
             email: '',
-            sendmail: '',
+            sendmail: false,
             getting : false
         };
         this.onSubmit = this.onSubmit.bind(this);
     }
-    //Послк рендера формы обратимся к серверу, получим настройки и вставим полученные данные в поля формы
+    //После рендера формы обратимся к серверу, получим настройки и вставим полученные данные в поля формы
     componentDidMount() {
         if (!this.state.getting) {
             const req = new XMLHttpRequest();
@@ -55,6 +57,10 @@ class FormSettings extends Form {
                 secure: this.state.emailsecure,
                 mail: this.state.email,
                 sendmail: this.state.sendmail
+            },
+            settings: {
+                sendAdmLogin: this.state.sendAdmLogin,
+                countMessagesOnePage: +this.state.countMessagesOnePage
             }
             
         });
@@ -79,6 +85,8 @@ class FormSettings extends Form {
                <form>
                    <h3>Логин администратора <input name="login" type="text" value={this.state.login} onChange={this.onChange}/></h3>
                    <h3>Пароль администратора <input name="pass" type="password" value={this.state.pass} onChange={this.onChange}/></h3>
+                   <h3>Сообщать о входе администратора на почту <input name="sendAdmLogin" type="checkbox" checked={this.state.sendAdmLogin} onChange={this.onChange}/></h3>
+                   <h3>Количество сообщений на странице <input name="countMessagesOnePage" type="text" value={this.state.countMessagesOnePage} onChange={this.onChange}/></h3>
                    <h3>Отправлять сообщения на email <input name="sendmail" type="checkbox" checked={this.state.sendmail} onChange={this.onChange}/></h3>
                    <h3>Адрес почты <input name="emaillogin" type="text" value={this.state.emaillogin} onChange={this.onChange}/></h3>
                    <h3>Пароль почты <input name="emailpass" type="password" value={this.state.emailpass} onChange={this.onChange}/></h3>

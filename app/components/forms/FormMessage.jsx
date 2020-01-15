@@ -40,10 +40,10 @@ class FormMessage extends Form {
         req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         req.addEventListener('readystatechange', ()=>{
             if(req.status == 200) {
-                this.props.showMessage(true, 'Отправленно', 'Ваше сообщение отправленно. Я свяжусь с вами при первой возможности.'); 
+                this.props.showMessage(true, 'Отправлено', 'Ваше сообщение отправлено. Я свяжусь с вами при первой возможности.'); 
             }
             else {
-                this.props.showMessage(true, 'Ошибка', 'Что-то пошло не так. Просьба переотправить сообщение на e-mail. Сылка ниже. Спасибо за понимание.'); 
+                this.props.showMessage(true, 'Ошибка', 'Что-то пошло не так. Просьба переслать сообщение на e-mail. Ссылка ниже. Спасибо за понимание.'); 
             }
         });
         req.send(sendData);
@@ -56,7 +56,7 @@ class FormMessage extends Form {
         <form>
             <h2>Сообщение</h2>
             <textarea name="message" value={this.state.message} onChange={this.onChange}/>
-            <h3>Представтесь пожалуйста<input name="name" type="text" value={this.state.name} onChange={this.onChange}/></h3>
+            <h3>Представьтесь пожалуйста<input name="name" type="text" value={this.state.name} onChange={this.onChange}/></h3>
             <h3>Ваш адрес <input name="adress" type="adress" value={this.state.adress} onChange={this.onChange}/></h3>
             <ButtonOK onClick={this.onSubmit} />
         </form>

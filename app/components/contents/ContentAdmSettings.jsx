@@ -7,7 +7,7 @@ class ContentAdmSettings extends Content {
     
     render() {
         return (
-            <div className={((this.state.visibility)?'visibility':'hiden') + ' content'} >
+            <div className='content' >
                 <h1>Настройки</h1>
                 <FormSettings showMessage={this.props.showMessage}/>
             </div>

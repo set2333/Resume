@@ -11,6 +11,10 @@ const Email = mongoose.model('email', emailSchema);
 const userSchema = new Schema({login: String, pass:String});
 const User = mongoose.model('user', userSchema);
 
+const settingSchema = new Schema({sendAdmLogin: Boolean, countMessagesOnePage:Number});
+const Setting = mongoose.model('setting', settingSchema);
+
 module.exports.Message = Message;
 module.exports.Email = Email;
 module.exports.User = User;
+module.exports.Setting = Setting;

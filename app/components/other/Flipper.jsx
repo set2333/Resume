@@ -4,11 +4,12 @@ const TableMessages = require('./TableMessages.jsx');
 class Flipper extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {curentPage : 1, messages : [], countPage : 1};
+        this.state = {curentPage : 1, messages : [], countPage : 1, countMessagesOnePage:0};
         this.upPage = this.upPage.bind(this);
         this.downPage = this.downPage.bind(this);
         this.getMessages = this.getMessages.bind(this);
         this.onInputChange = this.onInputChange.bind(this);
+        this.deleteMessage = this.deleteMessage.bind(this);
     }
     
     componentDidMount() {
@@ -25,7 +26,7 @@ class Flipper extends React.Component {
         req.onload = ()=>{
             if(req.status == 200) {
                 let data = JSON.parse(req.responseText);
-                let count = data.count/10;
+                let count = data.count/data.countMessagesOnePage;
                 data.countPage = (count > Math.floor(count))?Math.floor(count)+1:Math.floor(count);
                 data.curentPage = curentPage;
                 this.setState(data);
@@ -37,18 +38,16 @@ class Flipper extends React.Component {
         req.send(sendData);
     }
     
+    deleteMessage(id) {
+        alert(id);
+    }
+    
     upPage() {
-//        if(this.state.curentPage < this.state.countPage) {
-//            console.log('up2');
-            this.getMessages(this.state.curentPage+1);
-//        }
+        this.getMessages(+this.state.curentPage+1);
     }
     
     downPage() {
-//        if(this.state.curentPage > 0) {
-//            console.log('down2');
-            this.getMessages(this.state.curentPage-1);
-//        }
+        this.getMessages(+this.state.curentPage-1);
     }
     
     onInputChange(e) {
@@ -66,7 +65,7 @@ class Flipper extends React.Component {
                 
                 <p>{buttonDown}<input type="text" value={this.state.curentPage} onChange={this.onInputChange}></input> / {this.state.countPage}{buttonUp}</p>
                 
-                <TableMessages messages={this.state.messages} showMessage={this.props.showMessage} getMessages={this.getMessages} curentPage={this.state.curentPage}/>                          
+                <TableMessages messages={this.state.messages} showMessage={this.props.showMessage} getMessages={this.getMessages} curentPage={this.state.curentPage} deleteMessage={this.deleteMessage}/>                          
             </div>
             
         );

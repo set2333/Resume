@@ -7,7 +7,7 @@ class ContentAdmAllmessage extends Content {
 
     render() {
         return (
-            <div className={((this.state.visibility)?'visibility':'hiden') + ' content'} >
+            <div className='content' >
                 <h1>Все сообщения</h1>
                 <Flipper showMessage={this.props.showMessage}/>
             </div>

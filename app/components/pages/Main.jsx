@@ -28,6 +28,22 @@ class Main extends Page {
     }
     
     render() {
+        let content = '';
+        if(this.state.main) {
+            content = <ContentMain refresh={this.refresh} />;
+        }
+        else if(this.state.work) {
+            content = <ContentWork refresh={this.refresh} />;
+        }
+        else if(this.state.live) {
+            content = <ContentLive refresh={this.refresh} />;
+        }
+        else if(this.state.link) {
+            content = <ContentLink refresh={this.refresh} showMessage={this.showMessage}/> 
+        }
+        else {
+            content = <ContentNotFound refresh={this.refresh} />
+        }
         return (
             <div>
                 <Message visibility={this.state.message} showMessage={this.showMessage} headMessage={this.state.headMessage} textMessage={this.state.textMessage} ulData={this.state.ulData}/>
@@ -39,11 +55,7 @@ class Main extends Page {
                         <ButtonNav title='Контакты' refresh={this.refresh} contentName="link" acent={this.state.link}/>
                     </ul>
                 </nav>    
-                <ContentMain refresh={this.refresh} visibility={this.state.main} />
-                <ContentWork refresh={this.refresh} visibility={this.state.work} />
-                <ContentLive refresh={this.refresh} visibility={this.state.live} />
-                <ContentLink refresh={this.refresh} visibility={this.state.link} showMessage={this.showMessage}/>
-                <ContentNotFound refresh={this.refresh} visibility={this.state.notfound}/>
+                {content}
             </div>
         );
     }

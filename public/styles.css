@@ -140,16 +140,6 @@ q:after {
 
 /* конец кода сброса стилей браузера */
 
-/*Два класса для показа и скрытия блоков с контентом*/
-
-.hiden {
-    display: none;
-}
-
-.visibility {
-    display: block;
-}
-
 /*Классы с одинаковыми рамками и тенью*/
 
 .content, .photo, .message, .buttonOK, .form_message, .upPage, .downPage {
@@ -226,7 +216,7 @@ h2 {
     background: url(images/note.svg) repeat-x top left / 36px auto, url(images/cel.svg);
 }
 
-.content li {
+li {
     list-style: none;
     background: url(images/marker.svg) no-repeat left / contain;
     text-align: left;
@@ -328,4 +318,13 @@ h2 {
 
 .flipper input{
     width: 40px;
+}
+
+/*Кнопка удаления*/
+.ButtonDelete {
+    background: url(images/ButtonDelete.svg) no-repeat center / contain;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-left: 20px;
 }

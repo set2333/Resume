@@ -3,6 +3,7 @@ const express = require('express');
 const User = require('./mongooseInit.js').User;
 const Email = require('./mongooseInit.js').Email;
 const Message = require('./mongooseInit.js').Message;
+const Setting = require('./mongooseInit.js').Setting;
 const crypto = require('crypto');
 
 const RouterAdmin = express.Router();
@@ -51,7 +52,12 @@ RouterAdmin.post('/getsettings', isAutorized, (req, res) => {
             data.emailport = dataEmail.port;
             data.emailsecure = dataEmail.secure;
             data.sendmail = dataEmail.sendmail;
-            res.send(JSON.stringify(data));
+            Setting.findOne({}, (err, dataSettings)=>{
+                if (err) return res.sendStatus(400);
+                data.sendAdmLogin = dataSettings.sendAdmLogin;
+                data.countMessagesOnePage = dataSettings.countMessagesOnePage;
+                res.send(JSON.stringify(data));
+            });
         });
     });
 });
@@ -68,7 +74,12 @@ RouterAdmin.post('/setsettings', jsonParser, isAutorized, (req, res) => {
         let email = new Email(req.body.email);
         email.save((err) => {
             if (err) return res.sendStatus(400);
-            return res.sendStatus(200);
+            Setting.collection.drop();
+            let settings = new Setting(req.body.settings);
+            settings.save((err)=>{
+                if (err) return res.sendStatus(400);
+                return res.sendStatus(200);
+            });
         });
     });
 });
@@ -76,27 +87,31 @@ RouterAdmin.post('/setsettings', jsonParser, isAutorized, (req, res) => {
 //Получение списка сообщений
 RouterAdmin.post('/getmessages', jsonParser, isAutorized, (req, res) => {
     if (!req.body) return res.sendStatus(400);
-    let messagePageNumber = req.body.numberPage * 10;
-    Message.find({}, (err, docs) => {
-        if (err) return sendStatus(400);
-        let data = {
-            count:docs.length,
-            messages : []
-        }
-        let endItem = (messagePageNumber+10>docs.length)?docs.length-messagePageNumber:10;
-        if(messagePageNumber=>0 && messagePageNumber+endItem<docs.length) { //Проверка. Мы не должны считывать элементы за пределпми массива docs
-            for (let i = 0; i < endItem; i++) {
-                data.messages.push({
-                    date: docs[messagePageNumber + i].date,
-                    autor: docs[messagePageNumber + i].autor,
-                    adress: docs[messagePageNumber + i].adress,
-                    id: docs[messagePageNumber + i]._id,
-                    readed: docs[messagePageNumber + i].readed
-                });
+    Setting.findOne({}, (err, doc) => {
+        if (err) return res.sendStatus(400);
+        let countMessagesOnePage = doc.countMessagesOnePage;
+        let messagePageNumber = req.body.numberPage * countMessagesOnePage;
+        Message.find({}).sort('-date').exec((err, docs) => {
+            if (err) return sendStatus(400);
+            let data = {
+                count: docs.length,
+                countMessagesOnePage:countMessagesOnePage,
+                messages: []
             }
-        }
-        
-        res.send(JSON.stringify(data));
+            let endItem = (messagePageNumber + countMessagesOnePage > docs.length) ? docs.length - messagePageNumber : countMessagesOnePage;
+            if (messagePageNumber => 0 && messagePageNumber + endItem < docs.length) { //Проверка. Мы не должны считывать элементы за пределпми массива docs
+                for (let i = 0; i < endItem; i++) {
+                    data.messages.push({
+                        date: docs[messagePageNumber + i].date,
+                        autor: docs[messagePageNumber + i].autor,
+                        adress: docs[messagePageNumber + i].adress,
+                        id: docs[messagePageNumber + i]._id,
+                        readed: docs[messagePageNumber + i].readed
+                    });
+                }
+            }
+            res.send(JSON.stringify(data));
+        });
     });
 });
 
@@ -105,14 +120,21 @@ RouterAdmin.post('/getmessage', jsonParser, isAutorized, (req, res) => {
     if (!req.body) return res.sendStatus(400);
     Message.findById(req.body._id, (err, doc) => {
         if (err) return res.sendStatus(400);
-        let messages = {autor:doc.autor, message:doc.message, id:doc._id, date:doc.date, adress:doc.adress};
+        let messages = {
+            autor: doc.autor,
+            message: doc.message,
+            id: doc._id,
+            date: doc.date,
+            adress: doc.adress
+        };
         if (!doc.readed) {
-            Message.findByIdAndUpdate(req.body._id, {readed:true}, (err, doc)=>{
-                if(err) return res.sendStatus(400);
+            Message.findByIdAndUpdate(req.body._id, {
+                readed: true
+            }, (err, doc) => {
+                if (err) return res.sendStatus(400);
                 res.send(JSON.stringify(messages));
             });
-        }
-        else {
+        } else {
             res.send(JSON.stringify(messages));
         }
     });

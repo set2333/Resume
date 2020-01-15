@@ -1,5 +1,6 @@
 //Таблица с сообщениями
 const React = require('react');
+const ButtonDelete = require('../buttons/ButtonDelete.jsx');
 
 class TableMessages extends React.Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class TableMessages extends React.Component {
                         <tr className={(!item.readed)?'noReaded':''} onClick={this.onClick.bind(this, item.id)}>
                             <td>{item.autor}</td>
                             <td>{item.adress}</td>
-                            <td>{item.date}</td>
+                            <td>{item.date}<ButtonDelete onClick={this.props.deleteMessage} idMessage={item.id}/></td>
                         </tr>
                     );
                 })}

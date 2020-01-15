@@ -26,6 +26,19 @@ class Admin extends Page {
     }
 
     render() {
+        let content = '';
+        if(this.state.main) {
+            content = <ContentAdmMain refresh={this.refresh} />;
+        }
+        else if(this.state.allmessage) {
+            content = <ContentAdmAllmessage refresh={this.refresh} showMessage={this.showMessage}/>;
+        }
+        else if(this.state.settings) {
+            content = <ContentAdmSettings refresh={this.refresh} showMessage={this.showMessage}/>;
+        }
+        else {
+            content = <ContentNotFound refresh={this.refresh} />
+        }
         return(
             <div>
             <Message visibility={this.state.message} showMessage={this.showMessage} headMessage={this.state.headMessage} textMessage={this.state.textMessage} ulData={this.state.ulData}/>
@@ -37,10 +50,7 @@ class Admin extends Page {
                             <ButtonNavLink title='Основной раздел' contentName="main" />
                         </ul>
                     </nav>    
-                    <ContentAdmMain refresh={this.refresh} visibility={this.state.main}/>
-                    <ContentAdmAllmessage refresh={this.refresh} visibility={this.state.allmessage} showMessage={this.showMessage}/>
-                    <ContentAdmSettings refresh={this.refresh} visibility={this.state.settings} showMessage={this.showMessage}/>
-                    <ContentNotFound refresh={this.refresh} visibility={this.state.notfound}/>
+                    {content}
             </div>    
         )
     }
