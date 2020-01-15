@@ -83,14 +83,17 @@ RouterAdmin.post('/getmessages', jsonParser, isAutorized, (req, res) => {
             count:docs.length,
             messages : []
         }
-        let endItem = (messagePageNumber*10+10>docs.length)?docs.length-messagePageNumber*10:10;
-        for (let i = 0; i < endItem; i++) {
-            data.messages.push({
-                date: docs[messagePageNumber + i].date,
-                autor: docs[messagePageNumber + i].autor,
-                adress: docs[messagePageNumber + i].adress,
-                id: docs[messagePageNumber + i]._id
-            });
+        let endItem = (messagePageNumber+10>docs.length)?docs.length-messagePageNumber:10;
+        if(messagePageNumber=>0 && messagePageNumber+endItem<docs.length) { //Проверка. Мы не должны считывать элементы за пределпми массива docs
+            for (let i = 0; i < endItem; i++) {
+                data.messages.push({
+                    date: docs[messagePageNumber + i].date,
+                    autor: docs[messagePageNumber + i].autor,
+                    adress: docs[messagePageNumber + i].adress,
+                    id: docs[messagePageNumber + i]._id,
+                    readed: docs[messagePageNumber + i].readed
+                });
+            }
         }
         
         res.send(JSON.stringify(data));
@@ -101,9 +104,17 @@ RouterAdmin.post('/getmessages', jsonParser, isAutorized, (req, res) => {
 RouterAdmin.post('/getmessage', jsonParser, isAutorized, (req, res) => {
     if (!req.body) return res.sendStatus(400);
     Message.findById(req.body._id, (err, doc) => {
-        if (err) return sendStatus(400);
+        if (err) return res.sendStatus(400);
         let messages = {autor:doc.autor, message:doc.message, id:doc._id, date:doc.date, adress:doc.adress};
-        res.send(JSON.stringify(messages));
+        if (!doc.readed) {
+            Message.findByIdAndUpdate(req.body._id, {readed:true}, (err, doc)=>{
+                if(err) return res.sendStatus(400);
+                res.send(JSON.stringify(messages));
+            });
+        }
+        else {
+            res.send(JSON.stringify(messages));
+        }
     });
 });
 

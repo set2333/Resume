@@ -16,6 +16,7 @@ class TableMessages extends React.Component {
             if(req.status == 200 && req.responseText) {
                 let data = JSON.parse(req.responseText);
                 this.props.showMessage(true, 'От: ' + data.autor, data.message, [data.date, data.adress]);
+                this.props.getMessages(this.props.curentPage);
             }
             else {
                 this.props.showMessage(true, 'Ошибка', 'Не удалось показать сообщение. '); 
@@ -34,7 +35,7 @@ class TableMessages extends React.Component {
                 </tr>
                 {this.props.messages.map((item)=>{
                     return(
-                        <tr onClick={this.onClick.bind(this, item.id)}>
+                        <tr className={(!item.readed)?'noReaded':''} onClick={this.onClick.bind(this, item.id)}>
                             <td>{item.autor}</td>
                             <td>{item.adress}</td>
                             <td>{item.date}</td>

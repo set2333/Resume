@@ -152,7 +152,7 @@ q:after {
 
 /*Классы с одинаковыми рамками и тенью*/
 
-.content, .photo, .message, .buttonOK, .form_message {
+.content, .photo, .message, .buttonOK, .form_message, .upPage, .downPage {
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 3px 3px 5px black;
@@ -310,4 +310,22 @@ h2 {
 .tebleMessages td, .tebleMessages th {
     border:1px solid black;
     text-align: center;
+}
+
+.noReaded {
+    font-weight: bold;
+}
+
+/*Стили переключателя страниц с сообщениями*/
+.upPage, .downPage {
+    display: inline-block;
+    background: #65E841;
+    width: 22px;
+    height: 22px;
+    margin: 0 10px 0 10px;
+}
+
+
+.flipper input{
+    width: 40px;
 }

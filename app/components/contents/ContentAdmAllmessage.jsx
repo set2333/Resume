@@ -9,7 +9,7 @@ class ContentAdmAllmessage extends Content {
         return (
             <div className={((this.state.visibility)?'visibility':'hiden') + ' content'} >
                 <h1>Все сообщения</h1>
-                <Flipper />
+                <Flipper showMessage={this.props.showMessage}/>
             </div>
         );
     }
