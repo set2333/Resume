@@ -8,7 +8,7 @@ class TableMessages extends React.Component {
         this.onClick = this.onClick.bind(this);
     }
     
-    onClick(id) {
+    onClick(id) {//По клику на строку таблицы позгрузим сообщение и отобразим его в окошке
         let sendData = JSON.stringify({_id:id});
         const req = new XMLHttpRequest();
         req.open("POST", '/admin/getmessage', true);

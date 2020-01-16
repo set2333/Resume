@@ -5,6 +5,7 @@ const Email = require('./mongooseInit.js').Email;
 const Message = require('./mongooseInit.js').Message;
 const Setting = require('./mongooseInit.js').Setting;
 const crypto = require('crypto');
+const sendEmail = require('./sendEmail.js');
 
 const RouterAdmin = express.Router();
 const jsonParser = express.json();
@@ -34,7 +35,13 @@ RouterAdmin.post('/login', jsonParser, (req, res) => {
     }, (err, doc) => {
         if (err || doc === null) return res.sendStatus(400);
         req.session.key = doc._id;
-        return res.sendStatus(200);
+        Setting.findOne({}, (err, doc)=>{
+            if(err) return res.sendStatus(400);
+            if(doc.sendAdmLogin) {
+                sendEmail({message:'Совершен вход в административный раздел.'}, true);
+            }
+            return res.sendStatus(200);
+        });
     });
 });
 
@@ -137,6 +144,15 @@ RouterAdmin.post('/getmessage', jsonParser, isAutorized, (req, res) => {
         } else {
             res.send(JSON.stringify(messages));
         }
+    });
+});
+
+//Удаление сообщения
+RouterAdmin.post('/deletemessage', jsonParser, isAutorized, (req, res)=>{
+    if(!req.body) return res.sendStatus(400);
+    Message.findByIdAndDelete(req.body.id, (err, doc)=>{
+        if(err) return res.sendStatus(400);
+        res.sendStatus(200);
     });
 });
 

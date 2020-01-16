@@ -1,3 +1,4 @@
+//Переключатель страниц с сообщениями.
 const React = require('react');
 const TableMessages = require('./TableMessages.jsx');
 
@@ -16,6 +17,7 @@ class Flipper extends React.Component {
         this.getMessages(this.state.curentPage);
     }
     
+    //Получаем список сообщений на странице с номером curentPage
     getMessages(curentPage) {
         const req = new XMLHttpRequest();
         let sendData = JSON.stringify({
@@ -38,18 +40,36 @@ class Flipper extends React.Component {
         req.send(sendData);
     }
     
+    //Удаляем сообщение по ИД
     deleteMessage(id) {
-        alert(id);
+        const req = new XMLHttpRequest();
+        let sendData = JSON.stringify({
+            id: id
+        });
+        req.open("POST", '/admin/deletemessage', true);
+        req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        req.onload = ()=>{
+            if(req.status == 200) {
+                this.getMessages(this.state.curentPage);
+            }
+            else {
+                this.props.showMessage(true, 'Ошибка', 'Не удалось удалить сообщение. '); 
+            }
+        };
+        req.send(sendData);
     }
     
+    //Перелистнуть на следующую страницу
     upPage() {
         this.getMessages(+this.state.curentPage+1);
     }
     
+    //Перелистнуть на предидущую страницу
     downPage() {
         this.getMessages(+this.state.curentPage-1);
     }
     
+    //Перелистнуть на страницу по введеному номеру
     onInputChange(e) {
         let value = e.target.value;
         if(value>0 && value <= this.state.countPage) {
