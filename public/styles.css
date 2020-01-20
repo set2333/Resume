@@ -148,6 +148,11 @@ q:after {
     box-shadow: 3px 3px 5px black;
 }
 
+/*Курсор для внутренних ссылока. React класс ButtonAncor*/
+.pointer {
+    cursor: pointer;
+}
+
 /*Кнопки меню*/
 nav {
     width: 240px;

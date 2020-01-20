@@ -20,6 +20,12 @@ class ContentLink extends Content {
                     <li>Кстати, исходники этого сайта <a href="https://github.com/set2333/Resume">там же.</a></li>
                     <li>А вот <a href="https://drive.google.com/open?id=18QpwXxgM2pvLe-SYb5ftMry-rkhhJhLQ">сертификат</a> с финала Цифрового прорыва 2019</li>
                 </ul>
+                <h2>Ссылки не связанные с ИТ</h2>
+                <ul>
+                    <li><a href="https://vk.com/set2333">ВКонтакте</a></li>
+                    <li>Аккаунт на <a href="https://www.chess.com/member/set2333">Chees.com</a></li>
+                    <li><a href="http://samlib.ru/editors/t/trofimow_e_s/">Самиздат</a></li>
+                </ul>
             </div>
             );
     }

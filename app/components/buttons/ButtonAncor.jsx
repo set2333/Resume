@@ -5,7 +5,7 @@ const Button = require('./Button.jsx');
 class ButtonAncor extends Button {
     
     render() {
-        return <b onClick={this.onClick}>{this.props.title}</b>;
+        return <b className='pointer' onClick={this.onClick}>{this.props.title}</b>;
     }
 }
 
