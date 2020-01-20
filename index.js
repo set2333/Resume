@@ -18,7 +18,7 @@ app.use('/', Router);
 
 mongoose.connect('mongodb://localhost:27017/resumedb', {useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
     if(err) return console.log(err);
-    app.listen(3000, ()=>{
+    app.listen(80, ()=>{
         console.log('Server started');
     });
 });
