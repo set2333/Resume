@@ -6,9 +6,12 @@ const Message = require('./mongooseInit.js').Message;
 const Setting = require('./mongooseInit.js').Setting;
 const crypto = require('crypto');
 const sendEmail = require('./sendEmail.js');
+const Logger = require('./Logger.js');
 
 const RouterAdmin = express.Router();
 const jsonParser = express.json();
+
+RouterAdmin.use(Logger);
 
 //Функция возвращает хэш
 function getHash(value) {

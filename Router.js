@@ -2,9 +2,12 @@
 const express = require('express');
 const Message = require('./mongooseInit.js').Message;
 const sendEmail = require('./sendEmail.js');
+const Logger = require('./Logger.js');
 
 const Router = express.Router();
 const jsonParser = express.json();
+
+Router.use(Logger);
 
 //Страница с ссылками и формой отправки сообщения
 Router.get('/about', (req, res)=>{
