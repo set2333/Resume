@@ -11,7 +11,7 @@ function writeLog(logStr) {
 }
 
 function logger(req, res, next) {
-    const logString = req.method + ' ' + req.url + ' ' + req.hostname + ' ' req.connection.remoteAddress + ' ' + new Date();
+    const logString = req.method + ' ' + req.url + ' ' + req.hostname + ' ' + req.connection.remoteAddress + ' ' + new Date();
     setImmediate(writeLog.bind(this, logString));
     next();
 }
